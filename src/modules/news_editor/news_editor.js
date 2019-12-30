@@ -4,7 +4,7 @@ import MySider from '../../component/Sider/MySider.component';
 import MyUpload from '../../component/Upload/MyUpload.component';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
-import { Select, Input, Checkbox} from 'antd';
+import { Select, Input, Checkbox, Radio } from 'antd';
 import { Layout } from 'antd';
 
 import './news_editor.style.css';
@@ -73,13 +73,19 @@ class NewsEditor extends Component {
         }
     };
 
+    onChange = e => {
+        this.setState({
+          lan_mark: e.target.value,
+        });
+    };
+
     handleEditorChange(value) {
         this.setState({ content: value })
       }
 
     modules = {
         toolbar: [
-          [{'font':[]}, { 'header': [1, 2, 3, false] }, {'align':[]}],
+          [{'align':[]}],
           ['bold', 'italic', 'underline','strike', 'blockquote'],
           [{'color':[]}, {'background':[]}],
           [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
@@ -89,7 +95,7 @@ class NewsEditor extends Component {
       };
     
       formats = [
-        'font', 'header', 'align',
+        'align',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'color', 'background',
         'list', 'bullet', 'indent', 
@@ -123,26 +129,10 @@ class NewsEditor extends Component {
                                             <option value='点评活动'>点评活动</option>
                                             <option value='公司动态'>公司动态</option>
                                         </select> 
-                                        {/* <Select className='ft_backend_select' 
-                                                    style={{width:'191px'}} 
-                                                    placeholder='文章类型' 
-                                                    size='large' 
-                                                    name='type' 
-                                                    value={type} 
-                                                    onChange={this.handleChange}
-                                        >
-                                            <Option key='饭团新闻' value='饭团新闻'>饭团新闻</Option>
-                                            <Option key='点评活动' value='点评活动'>点评活动</Option>
-                                            <Option key='公司点评' value='公司动态'>公司动态</Option>
-                                        </Select> */}
-
-                                        <Checkbox name='lan_mark' value="E" onChange={this.handleChange} >
-                                            英文
-                                        </Checkbox>
-
-                                        <Checkbox name='lan_mark' value="C" onChange={this.handleChange} >
-                                            中文
-                                        </Checkbox>
+                                        <Radio.Group onChange={this.onChange} value={lan_mark}>
+                                            <Radio value='E'>英文</Radio>
+                                            <Radio value='C'>中文</Radio>
+                                        </Radio.Group>
                                     </div>
 
                                     <div className='ft_backend_editor_rows'>
@@ -153,7 +143,7 @@ class NewsEditor extends Component {
                                     <div className='ft_backend_upload_display'>
                                         <div className='ft_backend_upload_button_display'>
                                             <p className='ft_backend_label' style={{'padding-right':'40px'}}>封面图：</p>
-                                            <MyUpload  uploadname='添加封面图片' Cover={this.getCover} />
+                                            <MyUpload  uploadname='添加封面图' Cover={this.getCover} />
                                         </div>
 
                                     </div>
