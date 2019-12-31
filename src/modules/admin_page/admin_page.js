@@ -16,7 +16,7 @@ class HomePage extends Component {
                         <Header />
                         <Content className='ft_backend_content'>
                             <div>
-                                <p className='ft_backend_hp_title'>设置</p>
+                                <p className='ft_backend_title'>设置</p>
 
                             
                             </div>

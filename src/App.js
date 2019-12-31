@@ -9,6 +9,8 @@ import CareerEditor from './modules/career_editor/career_editor';
 import NewsChange from './modules/news_change/news_change';
 import CareerChange from './modules/career_change/career_change';
 import Admin from './modules/admin_page/admin_page';
+import CareerResume from './modules/career_resume/career_resume';
+import StoreResume from './modules/store_resume/store_resume';
 
 import './App.css';
 
@@ -24,6 +26,8 @@ function App() {
                 <Route exact path="/Fantuan_news_change" component = {NewsChange} />
                 <Route exact path="/Fantuan_career_change" component = {CareerChange} />
                 <Route exact path="/Fantuan_admin_page" component = {Admin} />
+                <Route exact path='/Fantuan_career_resume' component = {CareerResume} />
+                <Route exact path='/Fantuan_store_resume' component = {StoreResume} />
             </Switch>
         </div>
       </BrowserRouter>

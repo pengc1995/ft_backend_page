@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Header from '../../component/Header/Header.component';
 import MySider from '../../component/Sider/MySider.component';
 import MyUpload from '../../component/Upload/MyUpload.component';
-import axios from 'axios';
 import ReactQuill from 'react-quill';
+import axios from 'axios';
 import { Select, Input, Checkbox, Radio } from 'antd';
 import { Layout } from 'antd';
 
@@ -11,7 +11,9 @@ import './news_editor.style.css';
 
 const { Content } = Layout;
 const { Option } = Select;
+
 class NewsEditor extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -25,9 +27,26 @@ class NewsEditor extends Component {
         this.handleEditorChange = this.handleEditorChange.bind(this)
         this.getCover = this.getCover.bind(this)
     }
+
+    /* Handle Change Functions */
+    handleChange = event => {
+        //event.target will end up being the input element itself. And we want to pull off the 'name and value'
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+          });
+    };
+
     getCover = (newscover) => {
         this.setState({cover: newscover})
-    }
+    };
+
+    handleEditorChange(value) {
+        this.setState({ content: value })
+    };
+
     handleSubmit = async event =>{
         alert('Quill was submitted: ' + this.state.content);
         event.preventDefault();
@@ -54,35 +73,7 @@ class NewsEditor extends Component {
         
     };
 
-    handleChange = event => {
-        //event.target will end up being the input element itself. And we want to pull off the 'name and value'
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-        this.setState({
-            [name]: value
-          });
-    };
-
-    handleCheckbox = event => {
-        const{name,value} = event.target;
-        if(!this.state[name].includes(value)){
-            this.setState({[name]:this.state[name].concat([value])}) }//语法:this.state[name]
-        else{
-            this.setState({[name]:this.state[name].filter(checkbox => (checkbox != value))})
-        }
-    };
-
-    onChange = e => {
-        this.setState({
-          lan_mark: e.target.value,
-        });
-    };
-
-    handleEditorChange(value) {
-        this.setState({ content: value })
-      }
-
+    /* Rich Text Editor Customer-defined Toolbar */
     modules = {
         toolbar: [
           [{'align':[]}],
@@ -104,7 +95,7 @@ class NewsEditor extends Component {
 
     render() {
 
-        const {user, type, lan_mark, title, cover, content} = this.state;
+        const { user, type, lan_mark, title, cover, content } = this.state;
 
         return (
             <div>
@@ -119,7 +110,6 @@ class NewsEditor extends Component {
                                     <div className='ft_backend_single_row'>
                                         <select className='ft_backend_select' 
                                                 style={{width:'191px'}} 
-                                                placeholder='文章类型' 
                                                 size='large' 
                                                 name='type' 
                                                 value={type} 
@@ -129,7 +119,7 @@ class NewsEditor extends Component {
                                             <option value='点评活动'>点评活动</option>
                                             <option value='公司动态'>公司动态</option>
                                         </select> 
-                                        <Radio.Group onChange={this.onChange} value={lan_mark}>
+                                        <Radio.Group name='lan_mark' value={lan_mark} onChange={this.handleChange} >
                                             <Radio value='E'>英文</Radio>
                                             <Radio value='C'>中文</Radio>
                                         </Radio.Group>

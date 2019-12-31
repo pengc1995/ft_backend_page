@@ -1,11 +1,14 @@
+/* background */
 .ft_backend_background {
     background: white;
 }
+/* Contents */
 .ft_backend_content {
     width: 1200px;
     background:white;
     margin: 30px 30px;
 }
+
 .ft_backend_title {
     font-size:30px;
     font-family:PingFangSC-Semibold,PingFang SC;
@@ -13,6 +16,7 @@
     color:rgba(51,51,51,1);
     line-height:42px;
 }
+
 .ft_backend_label {
     font-size:16px;
     font-family:PingFangSC-Regular,PingFang SC;
@@ -22,17 +26,40 @@
 
     padding-top: 9px;
 }
+
+.ft_backend_instruction {
+    font-size:14px;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:20px;
+
+    padding-left: 15px;
+}
+/* Display */
 .ft_backend_single_row {
     display: flex;
     align-items: center;
     padding: 0 0 16px 105px;
 }
+
 .ft_backend_editor_rows {
     width: 850px;
     display: flex;
     justify-content: space-between;
     padding: 0 0 16px 0;
 }
+
+.ft_backend_change_button_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ft_backend_change_row_section {
+    display: flex;
+    justify-content: space-between;
+}
+/* Button */
 .ft_backend_button {
     width:124px;
     height:40px;
@@ -61,35 +88,17 @@
     color:rgba(71,80,90,1);
     line-height:16px;
 }
+/* Inputs */
 .ft_backend_select {
     width: 191px;
     height: 40px;
     margin: 0 40px 0 0;
     background: white;
-    border-radius:4px;
-    border:1px solid rgba(183,188,214,1);
+    /* border-radius:4px;
+    border:1px solid rgba(183,188,214,1); */
 }
 .ft_backend_input {
     width: 745px;
-}
-.ft_backend_instruction {
-    font-size:14px;
-    font-family:PingFangSC-Regular,PingFang SC;
-    font-weight:400;
-    color:rgba(153,153,153,1);
-    line-height:20px;
-
-    padding-left: 15px;
-}
-
-.ft_backend_change_button_row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.ft_backend_change_row_section {
-    display: flex;
-    justify-content: space-between;
 }
 
 .ft_backend_change_button {

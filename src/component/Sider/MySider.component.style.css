@@ -14,12 +14,6 @@
     padding: 24px 0 121px 50px;
 }
 
-.ft_backend_sider_menu {
-    width: 357px;
-    height: 100%;
-    background: rgba(31,38,62,1);
-}
-
 .ft_backend_sider_menu_item {
     font-size: 16px;
     font-family: PingFangSC-Medium,PingFang SC;
@@ -27,7 +21,7 @@
     color: rgba(255,255,255,1);
     line-height: 22px;
 
-    padding: 0 0 19px 33px;
+    padding: 0 0 19px 59px;
     background: rgba(31,38,62,1);
 }
 
